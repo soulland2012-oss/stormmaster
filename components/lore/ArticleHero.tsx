@@ -116,7 +116,7 @@ export default function ArticleHero({
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-10 pb-16 lg:pb-20"
+        className="relative z-20 w-full max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 pb-16 lg:pb-20"
       >
         {/* Tags */}
         {tags.length > 0 && (

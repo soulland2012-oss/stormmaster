@@ -22,7 +22,7 @@ export default function GalleryPageClient({ items }: { items: GalleryItem[] }) {
         }}
       >
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0A0806] to-transparent pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-12 w-full">
+        <div className="relative z-10 max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 pb-12 w-full">
           <p
             className="font-cinzel text-[0.6rem] tracking-[0.3em] mb-2"
             style={{ fontFamily: 'var(--font-cinzel, serif)', color: 'rgba(212,175,55,0.65)' }}
@@ -45,7 +45,7 @@ export default function GalleryPageClient({ items }: { items: GalleryItem[] }) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+      <div className="max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 py-16">
         <Gallery items={items} accentColor="#D4AF37" />
       </div>
     </div>

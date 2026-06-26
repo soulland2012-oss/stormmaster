@@ -141,7 +141,7 @@ export default function FeaturedSection() {
   const [featured, ...rest] = featuredItems
 
   return (
-    <section className="py-28 px-6 lg:px-10 max-w-7xl mx-auto">
+    <section className="py-28 px-6 lg:px-10 max-w-7xl 2xl:max-w-[1900px] mx-auto">
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

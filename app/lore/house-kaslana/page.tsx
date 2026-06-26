@@ -33,7 +33,7 @@ tags={['БЛАГОРОДНЫЙ ДОМ', 'АУРА СВЕТА', 'ВЕЛИКОЕ �
         className="bg-atmosphere-light min-h-screen"
         style={{ background: 'rgb(var(--bg-primary, 250 250 245))' }}
       >
-        <div className="max-w-7xl mx-auto px-5 lg:px-10 py-16 lg:py-20">
+        <div className="max-w-7xl 2xl:max-w-[1900px] mx-auto px-5 lg:px-10 2xl:px-16 py-16 lg:py-20">
           <div className="grid grid-cols-12 gap-8 lg:gap-12">
 
             {/* ── MAIN CONTENT ── */}

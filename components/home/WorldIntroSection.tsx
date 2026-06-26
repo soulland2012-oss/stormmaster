@@ -38,7 +38,7 @@ const pillars = [
 export default function WorldIntroSection() {
   return (
     <section className="py-24 px-6 lg:px-10">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl 2xl:max-w-[1900px] mx-auto">
         {/* Intro text */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}

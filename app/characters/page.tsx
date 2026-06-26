@@ -78,7 +78,7 @@ export default function CharactersPage() {
         }}
       >
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0A0806] to-transparent pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-12 w-full">
+        <div className="relative z-10 max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 pb-12 w-full">
           <p
             className="font-cinzel text-[0.6rem] tracking-[0.3em] mb-2"
             style={{ fontFamily: 'var(--font-cinzel, serif)', color: 'rgba(212,175,55,0.65)' }}
@@ -95,7 +95,7 @@ export default function CharactersPage() {
       </div>
 
       {/* Characters grid */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+      <div className="max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {characters.map((char) => (
             <Link key={char.name} href={char.href} className="group block">

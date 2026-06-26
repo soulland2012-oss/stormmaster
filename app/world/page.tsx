@@ -22,7 +22,7 @@ export default function WorldPage() {
       <WorldHero />
 
       <div
-        className="max-w-7xl mx-auto px-6 lg:px-10 py-20"
+        className="max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 py-20"
         style={{ background: 'rgb(250 250 245)' }}
       >
         <div className="text-center mb-14">

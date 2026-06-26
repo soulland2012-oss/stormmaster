@@ -71,29 +71,29 @@ export default function Navigation() {
           navBg,
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="max-w-7xl 2xl:max-w-[2000px] mx-auto px-6 lg:px-10 2xl:px-20">
+          <div className="flex items-center justify-between h-16 lg:h-20 2xl:h-28">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-8 h-8 text-gold-500 transition-all duration-500 group-hover:text-gold-400 group-hover:scale-110">
+            <Link href="/" className="flex items-center gap-3 2xl:gap-5 group">
+              <div className="w-8 h-8 2xl:w-12 2xl:h-12 text-gold-500 transition-all duration-500 group-hover:text-gold-400 group-hover:scale-110 2xl:[&>svg]:w-12 2xl:[&>svg]:h-12">
                 <KaslanaCrest size={32} className="text-gold-500 group-hover:animate-breathe" />
               </div>
               <div className="flex flex-col">
                 <span
-                  className={cn('font-cinzel text-sm font-700 tracking-[0.18em] leading-none transition-colors duration-500', scrolled ? 'text-stone-900' : 'text-white')}
+                  className={cn('font-cinzel text-sm 2xl:text-xl font-700 tracking-[0.18em] 2xl:tracking-[0.22em] leading-none transition-colors duration-500', scrolled ? 'text-stone-900' : 'text-white')}
                   style={{ fontFamily: 'var(--font-cinzel, serif)' }}
                 >
                   STORMMASTER
                 </span>
-                <span className="font-cinzel text-[0.6rem] tracking-[0.3em] text-gold-600 leading-none mt-0.5">
+                <span className="font-cinzel text-[0.6rem] 2xl:text-[0.85rem] tracking-[0.3em] text-gold-600 leading-none mt-0.5">
                   АРХИВ
                 </span>
               </div>
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1 2xl:gap-3">
               {navLinks.map((link) => (
                 <div
                   key={link.label}
@@ -104,7 +104,7 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'flex items-center gap-1 px-4 py-2 font-cinzel text-[0.72rem] tracking-[0.14em] transition-colors duration-200',
+                      'flex items-center gap-1 px-4 py-2 2xl:px-6 2xl:py-3 font-cinzel text-[0.72rem] 2xl:text-[1rem] tracking-[0.14em] 2xl:tracking-[0.18em] transition-colors duration-200',
                       pathname === link.href
                         ? 'text-gold-500'
                         : scrolled
@@ -117,7 +117,7 @@ export default function Navigation() {
                     {link.sub && (
                       <ChevronDown
                         size={12}
-                        className={cn(
+                        className={cn('2xl:!w-4 2xl:!h-4',
                           'transition-transform duration-200',
                           activeMenu === link.label && 'rotate-180',
                         )}
@@ -161,7 +161,7 @@ export default function Navigation() {
             </div>
 
             {/* Right actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 2xl:gap-6">
               {/* Search */}
               <div className="relative">
                 <AnimatePresence>
@@ -187,10 +187,10 @@ export default function Navigation() {
 
                 <button
                   onClick={() => setSearchOpen((v) => !v)}
-                  className={cn('p-2 transition-colors', scrolled ? 'text-stone-600 hover:text-gold-600' : 'text-white/70 hover:text-gold-400')}
+                  className={cn('p-2 2xl:p-3 transition-colors', scrolled ? 'text-stone-600 hover:text-gold-600' : 'text-white/70 hover:text-gold-400')}
                   aria-label="Search"
                 >
-                  <Search size={17} />
+                  <Search size={17} className="2xl:!w-6 2xl:!h-6" />
                 </button>
               </div>
 

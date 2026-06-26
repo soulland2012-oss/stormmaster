@@ -42,7 +42,7 @@ export default function Footer() {
       {/* Top atmospheric glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+      <div className="max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 py-16 lg:py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16 mb-16">
           {footerLinks.map((col) => (
             <div key={col.title}>

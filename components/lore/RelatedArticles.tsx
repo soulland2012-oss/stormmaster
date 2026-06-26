@@ -18,7 +18,7 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
         borderTop: '1px solid rgba(212,175,55,0.1)',
       }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl 2xl:max-w-[1900px] mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

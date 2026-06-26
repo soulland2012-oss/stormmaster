@@ -25,7 +25,7 @@ export function WorldHero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pb-14"
+        className="relative z-10 w-full max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 pb-14"
       >
         <p
           className="font-cinzel text-[0.6rem] tracking-[0.32em] mb-3"
