@@ -27,7 +27,7 @@ export default function Quote({ text, attribution, accentColor = '#D4AF37' }: Qu
         style={{
           fontFamily: 'var(--font-cinzel, serif)',
           fontSize: '5rem',
-          color: `${accentColor}12`,
+          color: `${accentColor}45`,
           lineHeight: 1,
         }}
       >

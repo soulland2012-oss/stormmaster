@@ -20,7 +20,7 @@ export default function SectionDivider({
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="flex items-center gap-4 my-12 lg:my-16"
+      className="flex items-center gap-4 mt-16 mb-24 lg:mt-24 lg:mb-28"
     >
       <motion.div
         initial={{ scaleX: 0 }}
@@ -36,7 +36,7 @@ export default function SectionDivider({
       {label && (
         <span
           className="font-cinzel text-[0.58rem] tracking-[0.3em] px-2 shrink-0"
-          style={{ fontFamily: 'var(--font-cinzel, serif)', color: `${accentColor}80` }}
+          style={{ fontFamily: 'var(--font-cinzel, serif)', color: accentColor }}
         >
           {label}
         </span>

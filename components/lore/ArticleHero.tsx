@@ -82,7 +82,7 @@ export default function ArticleHero({
         b={style.particleB}
         className="z-0"
       />
-      <LightRays rayCount={9} color={style.rayColor} originY={0} className="z-0" />
+      <LightRays rayCount={14} color={style.rayColor} originY={0} widthScale={2.2} className="z-0" />
 
       {/* Illustration placeholder — replace with <Image> once artwork is ready */}
       <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">

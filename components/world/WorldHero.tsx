@@ -17,7 +17,7 @@ export function WorldHero() {
       }}
     >
       <ParticleField count={40} r={100} g={190} b={130} className="z-0" />
-      <LightRays rayCount={7} color="rgba(80, 180, 110" originY={0} className="z-0" />
+      <LightRays rayCount={14} color="rgba(80, 180, 110" originY={0} widthScale={2.2} className="z-0" />
 
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#040C08] to-transparent pointer-events-none" />
 

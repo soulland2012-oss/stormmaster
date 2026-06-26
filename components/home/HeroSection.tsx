@@ -30,7 +30,7 @@ export default function HeroSection() {
     >
       {/* Particle fields */}
       <ParticleField count={70} r={212} g={175} b={55} className="z-0" />
-      <LightRays rayCount={10} originY={0} className="z-0" />
+      <LightRays rayCount={14} originY={0} className="z-0" />
 
       {/* Subtle marble texture overlay */}
       <div

@@ -33,7 +33,7 @@ function Section({ id, title, accent, children }: {
   id: string; title: string; accent: string; children: React.ReactNode
 }) {
   return (
-    <section id={id} className="scroll-mt-28">
+    <section id={id} className="scroll-mt-28 pt-6">
       <motion.h2
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -108,13 +108,23 @@ function Parable({ children, accent }: { children: React.ReactNode; accent: stri
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="my-6 p-6 rounded-sm"
-      style={{ background: `${accent}06`, border: `1px solid ${accent}18` }}
+      className="my-6 p-7 rounded-sm"
+      style={{
+        background: `${accent}0D`,
+        border: `1px solid ${accent}40`,
+        boxShadow: `0 0 0 1px ${accent}0C, 0 0 18px 4px ${accent}12, 0 0 40px 10px ${accent}07`,
+      }}
     >
-      <p className="font-cinzel text-[0.6rem] tracking-[0.28em] mb-4" style={{ fontFamily: 'var(--font-cinzel, serif)', color: `${accent}80` }}>
-        ЛЕГЕНДА
+      <p
+        className="font-cinzel font-semibold text-[0.65rem] tracking-[0.32em] mb-5"
+        style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}
+      >
+        ✦ ЛЕГЕНДА ✦
       </p>
-      <div className="text-stone-600 text-sm leading-8 whitespace-pre-line" style={{ fontFamily: 'Georgia, serif' }}>
+      <div
+        className="text-stone-700 leading-9 whitespace-pre-line italic"
+        style={{ fontFamily: 'Georgia, serif', fontSize: '0.97rem', letterSpacing: '0.01em' }}
+      >
         {children}
       </div>
     </motion.div>
@@ -164,6 +174,54 @@ function RankRow({ number, name, description, accent, apex, delay }: {
         <p className="text-stone-500 text-sm leading-6">{description}</p>
       </div>
     </motion.div>
+  )
+}
+
+const MANTIS_SPARKS = [
+  { left: '7%',  top: '75%', delay: 0,   dur: 3.2 },
+  { left: '19%', top: '80%', delay: 1.1, dur: 2.8 },
+  { left: '34%', top: '70%', delay: 0.5, dur: 3.5 },
+  { left: '52%', top: '85%', delay: 1.8, dur: 2.6 },
+  { left: '64%', top: '72%', delay: 0.9, dur: 3.0 },
+  { left: '76%', top: '78%', delay: 2.3, dur: 3.3 },
+  { left: '13%', top: '60%', delay: 2.8, dur: 2.9 },
+  { left: '44%', top: '65%', delay: 1.5, dur: 3.1 },
+]
+
+const MOTH_SPARKS = [
+  { left: '6%',  top: '78%', delay: 0.3, dur: 3.0 },
+  { left: '18%', top: '72%', delay: 1.4, dur: 3.4 },
+  { left: '31%', top: '82%', delay: 0.7, dur: 2.7 },
+  { left: '47%', top: '68%', delay: 2.0, dur: 3.2 },
+  { left: '60%', top: '75%', delay: 0.2, dur: 2.9 },
+  { left: '74%', top: '80%', delay: 1.6, dur: 3.6 },
+  { left: '11%', top: '55%', delay: 2.5, dur: 3.0 },
+  { left: '42%', top: '62%', delay: 1.0, dur: 2.8 },
+]
+
+function Fireflies({ sparks, color }: { sparks: typeof MANTIS_SPARKS; color: string }) {
+  return (
+    <>
+      {sparks.map((s, i) => (
+        <motion.div
+          key={i}
+          style={{
+            position: 'absolute',
+            left: s.left,
+            top: s.top,
+            width: '3px',
+            height: '3px',
+            borderRadius: '50%',
+            background: color,
+            boxShadow: `0 0 5px 2px ${color}`,
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}
+          animate={{ y: [0, -55, -115], x: [0, 7, -4], opacity: [0, 0.9, 0], scale: [0.4, 1.2, 0.4] }}
+          transition={{ duration: s.dur, delay: s.delay, repeat: Infinity, ease: 'easeOut' }}
+        />
+      ))}
+    </>
   )
 }
 
@@ -248,6 +306,18 @@ export default function ArticleBody({ data: d, accent }: ArticleBodyProps) {
             ))}
           </div>
           <BlockQuote text={d.structure.teachersQuote} accent={accent} />
+        </SubSection>
+
+        <SubSection title="Дом как единая семья" accent={accent}>
+          <Prose>
+            {d.structure.familyUnity.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+          </Prose>
+        </SubSection>
+
+        <SubSection title="Кровь Каслана" accent={accent}>
+          <Prose>
+            {d.structure.bloodline.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+          </Prose>
         </SubSection>
       </Section>
 
@@ -337,40 +407,58 @@ export default function ArticleBody({ data: d, accent }: ArticleBodyProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="p-6 rounded-sm"
-            style={{ background: `linear-gradient(135deg, ${accent}08, transparent)`, border: `1px solid ${accent}22` }}
+            style={{
+              position: 'relative',
+              overflow: 'hidden',
+              backgroundImage: "url('/images/mantis-bg.webp')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              border: '1px solid rgba(212,175,55,0.40)',
+              boxShadow: '0 0 0 1px rgba(212,175,55,0.18), 0 0 24px 8px rgba(212,175,55,0.26), 0 0 64px 20px rgba(212,175,55,0.11)',
+            }}
           >
-            <p
-              className="font-cinzel text-[0.6rem] tracking-[0.3em] mb-4"
-              style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}
-            >
-              БЕЛЫЙ МАНТИС — ОТКРЫТЫЙ ПУТЬ
-            </p>
-            <Prose>
-              {d.twoPaths.whiteMantis.description.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
-            </Prose>
-            <BlockQuote text={d.twoPaths.whiteMantis.quote} accent={accent} />
-            <div className="mt-4 space-y-3">
-              {d.twoPaths.whiteMantis.principles.map((pr) => (
-                <div key={pr.name} className="flex gap-3">
-                  <span className="w-1 h-1 rounded-full mt-2.5 shrink-0" style={{ background: accent }} />
-                  <div>
-                    <span className="font-cinzel text-xs font-semibold" style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}>
-                      {pr.name}
-                    </span>
-                    <span className="text-stone-500 text-sm"> — {pr.text}</span>
+            {/* Overlay */}
+            <div style={{
+              position: 'absolute', inset: 0, pointerEvents: 'none',
+              background: 'linear-gradient(105deg, rgba(255,252,238,0.78) 0%, rgba(255,252,238,0.68) 52%, rgba(255,252,238,0.28) 100%)',
+            }} />
+            {/* Gold fireflies */}
+            <Fireflies sparks={MANTIS_SPARKS} color="rgba(212,175,55,0.95)" />
+            {/* Content */}
+            <div style={{ position: 'relative', zIndex: 3 }}>
+              <p
+                className="font-cinzel text-[0.6rem] tracking-[0.3em] mb-4"
+                style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}
+              >
+                БЕЛЫЙ МАНТИС — ОТКРЫТЫЙ ПУТЬ
+              </p>
+              <Prose>
+                {d.twoPaths.whiteMantis.description.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+              </Prose>
+              <BlockQuote text={d.twoPaths.whiteMantis.quote} accent={accent} />
+              <div className="mt-4 space-y-3">
+                {d.twoPaths.whiteMantis.principles.map((pr) => (
+                  <div key={pr.name} className="flex gap-3">
+                    <span className="w-1 h-1 rounded-full mt-2.5 shrink-0" style={{ background: accent }} />
+                    <div>
+                      <span className="font-cinzel text-xs font-semibold" style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}>
+                        {pr.name}
+                      </span>
+                      <span className="text-stone-500 text-sm"> — {pr.text}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="font-cinzel text-[0.6rem] tracking-[0.2em] text-stone-400 mr-1" style={{ fontFamily: 'var(--font-cinzel, serif)' }}>
-                ЗАПРЕЩЕНО:
-              </span>
-              {d.twoPaths.whiteMantis.forbidden.map((f) => (
-                <span key={f} className="px-2.5 py-1 text-xs rounded-sm text-stone-500" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.18)' }}>
-                  {f}
+                ))}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="font-cinzel text-[0.6rem] tracking-[0.2em] text-stone-400 mr-1" style={{ fontFamily: 'var(--font-cinzel, serif)' }}>
+                  ЗАПРЕЩЕНО:
                 </span>
-              ))}
+                {d.twoPaths.whiteMantis.forbidden.map((f) => (
+                  <span key={f} className="px-2.5 py-1 text-xs rounded-sm text-stone-500" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.18)' }}>
+                    {f}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -382,43 +470,87 @@ export default function ArticleBody({ data: d, accent }: ArticleBodyProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="mb-8 p-6 rounded-sm"
-          style={{ background: `linear-gradient(135deg, ${MOTH_BLUE}08, transparent)`, border: `1px solid ${MOTH_BLUE}22` }}
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+            backgroundImage: "url('/images/moth-bg.webp')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'right center',
+            border: '1px solid rgba(0,195,215,0.38)',
+            boxShadow: '0 0 0 1px rgba(0,195,215,0.16), 0 0 24px 8px rgba(0,195,215,0.22), 0 0 64px 20px rgba(0,175,200,0.09)',
+          }}
         >
-          <p
-            className="font-cinzel text-[0.6rem] tracking-[0.3em] mb-4"
-            style={{ fontFamily: 'var(--font-cinzel, serif)', color: MOTH_BLUE }}
-          >
-            ЧЁРНАЯ МОЛЬ — СКРЫТЫЙ ПУТЬ
-          </p>
-          <Prose>
-            {d.twoPaths.blackMoth.description.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
-          </Prose>
-          <div className="mt-4 mb-4">
-            <Prose>
-              <p>{d.twoPaths.blackMoth.notAssassins}</p>
-            </Prose>
-          </div>
-          <p className="font-cinzel text-[0.6rem] tracking-[0.2em] mb-3 text-stone-400" style={{ fontFamily: 'var(--font-cinzel, serif)' }}>
-            ДИСЦИПЛИНЫ
-          </p>
-          <div className="flex flex-wrap gap-2 mb-5">
-            {d.twoPaths.blackMoth.disciplines.map((disc) => (
-              <span
-                key={disc}
-                className="px-3 py-1.5 text-xs rounded-sm"
-                style={{ background: `${MOTH_BLUE}0C`, border: `1px solid ${MOTH_BLUE}22`, color: 'rgb(87,83,78)' }}
+          {/* Overlay */}
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            background: 'linear-gradient(105deg, rgba(8,12,24,0.72) 0%, rgba(8,12,24,0.60) 52%, rgba(8,12,24,0.22) 100%)',
+          }} />
+          {/* Teal fireflies */}
+          <Fireflies sparks={MOTH_SPARKS} color="rgba(0,200,220,0.95)" />
+          {/* Content — light text for dark background */}
+          <div style={{ position: 'relative', zIndex: 3 }}>
+            <p
+              className="font-cinzel text-[0.6rem] tracking-[0.3em] mb-4"
+              style={{ fontFamily: 'var(--font-cinzel, serif)', color: '#C8EEFF' }}
+            >
+              ЧЁРНАЯ МОЛЬ — СКРЫТЫЙ ПУТЬ
+            </p>
+            <div className="mb-4">
+              {d.twoPaths.blackMoth.description.split('\n\n').map((p, i) => (
+                <p key={i} style={{ color: 'rgba(215,208,195,0.90)', fontFamily: 'Georgia, serif', fontSize: '1rem', lineHeight: '1.9', marginBottom: '1rem' }}>{p}</p>
+              ))}
+            </div>
+            <div className="mb-4">
+              {d.twoPaths.blackMoth.notAssassins.split('\n\n').map((p, i) => (
+                <p key={i} style={{ color: 'rgba(215,208,195,0.90)', fontFamily: 'Georgia, serif', fontSize: '1rem', lineHeight: '1.9', marginBottom: '1rem' }}>{p}</p>
+              ))}
+            </div>
+            <p className="font-cinzel text-[0.6rem] tracking-[0.2em] mb-3" style={{ fontFamily: 'var(--font-cinzel, serif)', color: 'rgba(212,175,55,0.85)' }}>
+              ДИСЦИПЛИНЫ
+            </p>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {d.twoPaths.blackMoth.disciplines.map((disc) => (
+                <span
+                  key={disc}
+                  className="px-3 py-1.5 text-xs rounded-sm"
+                  style={{ background: 'rgba(40,28,4,0.65)', border: '1px solid rgba(212,175,55,0.55)', color: '#D4AF37' }}
+                >
+                  {disc}
+                </span>
+              ))}
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="my-2 p-6 rounded-sm"
+              style={{
+                background: 'rgba(40,28,4,0.65)',
+                border: '1px solid rgba(212,175,55,0.50)',
+                boxShadow: '0 0 0 1px rgba(212,175,55,0.08), 0 0 14px 3px rgba(212,175,55,0.10), 0 0 30px 8px rgba(212,175,55,0.05)',
+              }}
+            >
+              <p
+                className="font-cinzel font-semibold text-[0.65rem] tracking-[0.32em] mb-5"
+                style={{ fontFamily: 'var(--font-cinzel, serif)', color: 'rgba(212,175,55,0.90)' }}
               >
-                {disc}
-              </span>
-            ))}
+                ✦ ЛЕГЕНДА ✦
+              </p>
+              <div
+                className="leading-9 whitespace-pre-line italic"
+                style={{ fontFamily: 'Georgia, serif', fontSize: '0.97rem', color: 'rgba(212,175,55,0.85)', letterSpacing: '0.01em' }}
+              >
+                {d.twoPaths.blackMoth.legend}
+              </div>
+            </motion.div>
           </div>
-          <Parable accent={MOTH_BLUE}>{d.twoPaths.blackMoth.legend}</Parable>
         </motion.div>
 
         <InfoCard accent={accent}>
           <p
             className="font-cinzel text-[0.6rem] tracking-[0.25em] mb-3"
-            style={{ fontFamily: 'var(--font-cinzel, serif)', color: `${accent}80` }}
+            style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}
           >
             ЕДИНСТВО ДВУХ ПУТЕЙ
           </p>
@@ -486,7 +618,7 @@ export default function ArticleBody({ data: d, accent }: ArticleBodyProps) {
         </div>
 
         <InfoCard accent={accent}>
-          <p className="font-cinzel text-[0.6rem] tracking-[0.25em] mb-3" style={{ fontFamily: 'var(--font-cinzel, serif)', color: `${accent}80` }}>
+          <p className="font-cinzel text-[0.6rem] tracking-[0.25em] mb-3" style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}>
             ДЕВЯТЫЙ РАНГ
           </p>
           <Prose>
@@ -584,7 +716,7 @@ export default function ArticleBody({ data: d, accent }: ArticleBodyProps) {
         </div>
 
         <InfoCard accent={accent}>
-          <p className="font-cinzel text-[0.6rem] tracking-[0.25em] mb-3" style={{ fontFamily: 'var(--font-cinzel, serif)', color: `${accent}80` }}>
+          <p className="font-cinzel text-[0.6rem] tracking-[0.25em] mb-3" style={{ fontFamily: 'var(--font-cinzel, serif)', color: accent }}>
             ЧУЖИЕ ИМЕНА
           </p>
           <Prose>
@@ -667,6 +799,12 @@ export default function ArticleBody({ data: d, accent }: ArticleBodyProps) {
         <SubSection title="Выбор пути" accent={accent}>
           <Prose>
             <p>{d.costOfLight.choice}</p>
+          </Prose>
+        </SubSection>
+
+        <SubSection title="Семья после Академии" accent={accent}>
+          <Prose>
+            <p>{d.costOfLight.familyLife}</p>
           </Prose>
         </SubSection>
 

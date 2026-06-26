@@ -40,9 +40,9 @@ tags={['БЛАГОРОДНЫЙ ДОМ', 'АУРА СВЕТА', 'ВЕЛИКОЕ �
             <ArticleBody data={d} accent={ACCENT} />
 
             {/* ── SIDEBAR ── */}
-            <aside className="col-span-12 lg:col-span-4 order-first lg:order-last">
-              <div className="lg:sticky lg:top-24 space-y-4">
-                <QuickFacts facts={d.quickFacts} />
+            <aside className="col-span-12 lg:col-span-4 order-first lg:order-last space-y-4">
+              <QuickFacts facts={d.quickFacts} />
+              <div className="lg:sticky lg:top-24">
                 <TableOfContents sections={d.sections} />
               </div>
             </aside>
