@@ -3,6 +3,7 @@ import { Cinzel, Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
+import ScrollToTop from '@/components/layout/ScrollToTop'
 
 const cinzel = Cinzel({
   subsets: ['latin'],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   )

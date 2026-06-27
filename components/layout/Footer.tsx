@@ -8,14 +8,16 @@ const footerLinks = [
       { label: 'Обзор',        href: '/world' },
       { label: 'Государства',  href: '/world/countries' },
       { label: 'Карта мира',   href: '/world/map' },
+      { label: 'Календарь',    href: '/world/calendar' },
     ],
   },
   {
-    title: 'Летопись',
+    title: 'Лор',
     links: [
+      { label: 'Дом Каслана',  href: '/lore/house-kaslana' },
       { label: 'Организации',  href: '/lore/organizations' },
-      { label: 'Магия и Аура', href: '/lore/magic' },
-      { label: 'История',      href: '/lore/history' },
+      { label: 'Системы сил',  href: '/lore/systems' },
+      { label: 'Пантеон',      href: '/lore/gods' },
     ],
   },
   {
