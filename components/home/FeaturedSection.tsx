@@ -19,7 +19,7 @@ const featuredItems = [
     category: 'Система магии',
     title: 'Аура и Резонанс',
     description: 'Первозданная сила, текущая через каждое живое существо. Пять ступеней мастерства и тайны Трансцендентности.',
-    href: '/lore/aura',
+    href: '/lore/systems/aura',
     gradient: 'from-violet-950/90 via-indigo-950/80 to-stone-950/90',
     accent: '#8B5CF6',
     tag: 'МАГИЯ',

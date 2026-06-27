@@ -8,12 +8,16 @@ interface QuickFactsProps {
   facts: QuickFact[]
   title?: string
   crestColor?: string
+  accentColor?: string
+  showCrest?: boolean
 }
 
 export default function QuickFacts({
   facts,
   title = 'At a Glance',
   crestColor = 'text-gold-500',
+  accentColor = '#D4AF37',
+  showCrest = true,
 }: QuickFactsProps) {
   return (
     <motion.aside
@@ -24,7 +28,7 @@ export default function QuickFacts({
       style={{
         background: 'rgba(255,255,255,0.72)',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(212,175,55,0.18)',
+        border: `1px solid ${accentColor}30`,
         boxShadow: '0 4px 30px rgba(0,0,0,0.06)',
       }}
     >
@@ -32,11 +36,11 @@ export default function QuickFacts({
       <div
         className="px-5 py-4 flex items-center gap-3"
         style={{
-          background: 'linear-gradient(135deg, rgba(212,175,55,0.12), rgba(245,230,163,0.06))',
-          borderBottom: '1px solid rgba(212,175,55,0.2)',
+          background: `linear-gradient(135deg, ${accentColor}18, ${accentColor}06)`,
+          borderBottom: `1px solid ${accentColor}28`,
         }}
       >
-        <KaslanaCrest size={22} className={crestColor} />
+        {showCrest && <KaslanaCrest size={22} className={crestColor} />}
         <h3
           className="font-cinzel text-[0.72rem] tracking-[0.2em] text-stone-800"
           style={{ fontFamily: 'var(--font-cinzel, serif)' }}
@@ -46,7 +50,7 @@ export default function QuickFacts({
       </div>
 
       {/* Facts list */}
-      <div className="divide-y divide-gold-500/08">
+      <div className="divide-y" style={{ borderColor: `${accentColor}0A` }}>
         {facts.map((fact, i) => (
           <motion.div
             key={fact.label}

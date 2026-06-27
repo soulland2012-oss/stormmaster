@@ -7,9 +7,10 @@ import type { Section } from '@/data/house-kaslana'
 
 interface TableOfContentsProps {
   sections: Section[]
+  accentColor?: string
 }
 
-export default function TableOfContents({ sections }: TableOfContentsProps) {
+export default function TableOfContents({ sections, accentColor = '#D4AF37' }: TableOfContentsProps) {
   const [active, setActive] = useState<string>('')
 
   useEffect(() => {
@@ -51,13 +52,13 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
       style={{
         background: 'rgba(255,255,255,0.65)',
         backdropFilter: 'blur(16px)',
-        border: '1px solid rgba(212,175,55,0.14)',
+        border: `1px solid ${accentColor}22`,
         boxShadow: '0 4px 24px rgba(0,0,0,0.05)',
       }}
     >
       <div
         className="px-5 py-3.5"
-        style={{ borderBottom: '1px solid rgba(212,175,55,0.15)' }}
+        style={{ borderBottom: `1px solid ${accentColor}20` }}
       >
         <h3
           className="font-cinzel text-[0.68rem] tracking-[0.22em] text-stone-600"
@@ -75,7 +76,7 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
             className={cn(
               'w-full text-left flex items-center gap-2.5 px-5 py-2 text-xs transition-all duration-200',
               active === section.id
-                ? 'text-gold-600 bg-gold-50/60'
+                ? 'text-stone-800 bg-stone-50/60'
                 : 'text-stone-500 hover:text-stone-800 hover:bg-stone-50/50',
             )}
           >
@@ -83,7 +84,7 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
               className="font-cinzel text-[0.55rem] shrink-0 w-5 text-right"
               style={{
                 fontFamily: 'var(--font-cinzel, serif)',
-                color: active === section.id ? '#D4AF37' : 'rgba(0,0,0,0.25)',
+                color: active === section.id ? accentColor : 'rgba(0,0,0,0.25)',
               }}
             >
               {String(i + 1).padStart(2, '0')}
@@ -92,7 +93,8 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
             {active === section.id && (
               <motion.div
                 layoutId="toc-indicator"
-                className="ml-auto w-1 h-1 rounded-full bg-gold-500"
+                className="ml-auto w-1 h-1 rounded-full shrink-0"
+                style={{ background: accentColor }}
               />
             )}
           </button>

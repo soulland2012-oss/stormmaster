@@ -10,7 +10,7 @@ interface ArticleHeroProps {
   subtitle: string
   tagline: string
   description: string
-  atmosphere?: 'light' | 'dark' | 'neutral'
+  atmosphere?: 'light' | 'dark' | 'neutral' | 'aura' | 'magic'
   tags?: string[]
   heroImage?: string
 }
@@ -28,6 +28,7 @@ const atmosphereStyles = {
     tagBg: 'rgba(212,175,55,0.12)',
     tagBorder: 'rgba(212,175,55,0.4)',
     tagColor: '#D4AF37',
+    fadeFrom: '#0D0A04',
   },
   dark: {
     bg: `
@@ -41,6 +42,7 @@ const atmosphereStyles = {
     tagBg: 'rgba(90,143,204,0.12)',
     tagBorder: 'rgba(90,143,204,0.4)',
     tagColor: '#5A8FCC',
+    fadeFrom: '#04060D',
   },
   neutral: {
     bg: `linear-gradient(180deg, #0A0A0A 0%, #141414 40%, #0A0A0A 100%)`,
@@ -50,6 +52,37 @@ const atmosphereStyles = {
     tagBg: 'rgba(192,192,192,0.1)',
     tagBorder: 'rgba(192,192,192,0.35)',
     tagColor: '#C0C0C0',
+    fadeFrom: '#0A0A0A',
+  },
+  aura: {
+    bg: `
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(56,189,248,0.32) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 40% at 80% 55%, rgba(14,165,233,0.14) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 30% at 20% 70%, rgba(56,189,248,0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #010810 0%, #021020 35%, #010C18 65%, #000408 100%)
+    `,
+    particleR: 56, particleG: 189, particleB: 248,
+    rayColor: 'rgba(100, 200, 255',
+    accentColor: '#38BDF8',
+    tagBg: 'rgba(56,189,248,0.12)',
+    tagBorder: 'rgba(56,189,248,0.4)',
+    tagColor: '#38BDF8',
+    fadeFrom: '#010810',
+  },
+  magic: {
+    bg: `
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(167,139,250,0.35) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 40% at 15% 55%, rgba(139,92,246,0.14) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 30% at 85% 70%, rgba(167,139,250,0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #050110 0%, #0A0320 35%, #070215 65%, #02010A 100%)
+    `,
+    particleR: 167, particleG: 139, particleB: 250,
+    rayColor: 'rgba(180, 150, 255',
+    accentColor: '#A78BFA',
+    tagBg: 'rgba(167,139,250,0.12)',
+    tagBorder: 'rgba(167,139,250,0.4)',
+    tagColor: '#A78BFA',
+    fadeFrom: '#050110',
   },
 }
 
@@ -111,7 +144,12 @@ export default function ArticleHero({
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#0D0A04] via-[#0D0A04]/70 to-transparent z-10 pointer-events-none" />
+      <div
+        className="absolute inset-x-0 bottom-0 h-3/4 z-10 pointer-events-none"
+        style={{
+          background: `linear-gradient(to top, ${style.fadeFrom} 0%, ${style.fadeFrom}B3 30%, transparent 100%)`,
+        }}
+      />
 
       {/* Content */}
       <motion.div

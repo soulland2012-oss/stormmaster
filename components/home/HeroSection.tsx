@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, BookOpen, Map } from 'lucide-react'
+import { BookOpen, Map } from 'lucide-react'
 import ParticleField from '@/components/effects/ParticleField'
 import LightRays from '@/components/effects/LightRays'
 import KaslanaCrest from '@/components/icons/KaslanaCrest'
@@ -11,10 +11,8 @@ import KaslanaCrest from '@/components/icons/KaslanaCrest'
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y       = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const y       = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
-
-  const scrollDown = () => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
 
   return (
     <section
@@ -30,7 +28,7 @@ export default function HeroSection() {
     >
       {/* Particle fields */}
       <ParticleField count={70} r={212} g={175} b={55} className="z-0" />
-      <LightRays rayCount={14} originY={0} className="z-0" />
+      <LightRays rayCount={14} originY={0} widthScale={3.5} className="z-0" />
 
       {/* Subtle marble texture overlay */}
       <div
@@ -46,11 +44,9 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Content */}
-      <motion.div
-        style={{ y, opacity }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
-      >
+      {/* Content — y and opacity split so z-index stacking stays predictable */}
+      <motion.div style={{ y }} className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <motion.div style={{ opacity }}>
         {/* Top ornament */}
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
@@ -140,32 +136,13 @@ export default function HeroSection() {
             <BookOpen size={14} />
             ОТКРЫТЬ АРХИВ
           </Link>
-          <Link href="/world" className="btn-ghost">
+          <Link href="/world" className="btn-gold">
             <Map size={14} />
             ИССЛЕДОВАТЬ МИР
           </Link>
         </motion.div>
       </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.button
-        onClick={scrollDown}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-gold-500/50 hover:text-gold-500 transition-colors group"
-        aria-label="Scroll down"
-      >
-        <span className="font-cinzel text-[0.55rem] tracking-[0.3em]" style={{ fontFamily: 'var(--font-cinzel, serif)' }}>
-          ЛИСТАТЬ
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        >
-          <ArrowDown size={16} />
-        </motion.div>
-      </motion.button>
+      </motion.div>
 
       {/* Bottom atmospheric fade */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-marble-warm to-transparent z-0 pointer-events-none" />
