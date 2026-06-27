@@ -23,6 +23,7 @@ const navLinks = [
     label: 'Лор',
     href: '/lore/house-kaslana',
     sub: [
+      { label: 'История мира', href: '/lore/history' },
       { label: 'Дом Каслана', href: '/lore/house-kaslana' },
       { label: 'Организации', href: '/lore/organizations' },
       { label: 'Системы',     href: '/lore/systems' },
