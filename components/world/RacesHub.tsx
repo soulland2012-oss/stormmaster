@@ -438,23 +438,6 @@ export default function RacesHub() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-20 w-full max-w-7xl 2xl:max-w-[1900px] mx-auto px-6 lg:px-10 pb-14"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex flex-wrap gap-2 mb-4"
-          >
-            {[
-              { label: 'ОБОРОТНИ', color: '#F59E0B', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.4)' },
-              { label: 'ДРОУ',     color: '#A855F7', bg: 'rgba(168,85,247,0.12)',  border: 'rgba(168,85,247,0.4)' },
-              { label: 'ЭЛЬФЫ',   color: '#60A5FA', bg: 'rgba(96,165,250,0.12)',  border: 'rgba(96,165,250,0.4)' },
-            ].map(t => (
-              <span key={t.label} className="font-cinzel text-[0.56rem] tracking-[0.26em] px-3 py-1" style={{ fontFamily: 'var(--font-cinzel, serif)', color: t.color, background: t.bg, border: `1px solid ${t.border}` }}>
-                {t.label}
-              </span>
-            ))}
-          </motion.div>
-
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
