@@ -17,6 +17,7 @@ const navLinks = [
       { label: 'Государства', href: '/world/countries' },
       { label: 'Карта мира',  href: '/world/map' },
       { label: 'Календарь',   href: '/world/calendar' },
+      { label: 'Расы',        href: '/world/races' },
     ],
   },
   {
