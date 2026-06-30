@@ -70,6 +70,18 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Support */}
+        <div className="flex justify-center mb-12">
+          <div className="text-center">
+            <p className="text-stone-400/50 text-xs mb-2" style={{ letterSpacing: '0.08em' }}>
+              поддержать энтузиазм
+            </p>
+            <p className="font-mono text-stone-500/60 text-sm tracking-widest select-all">
+              5392 0300 0145 2517
+            </p>
+          </div>
+        </div>
+
         {/* Divider */}
         <div className="flex items-center gap-4 mb-10">
           <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gold-500/30" />
