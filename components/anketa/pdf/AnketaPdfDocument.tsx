@@ -19,10 +19,11 @@ function raceLabel(raceId: string): string {
 }
 
 function Field({ label, value }: { label: string; value: string }) {
+  const isEmpty = !value
   return (
-    <View style={s.field}>
-      <Text style={s.fieldLabel}>{label.toUpperCase()}</Text>
-      <Text style={s.fieldValue}>{value || '—'}</Text>
+    <View style={s.fieldTag}>
+      <Text style={s.fieldTagLabel}>{label.toUpperCase()}</Text>
+      <Text style={isEmpty ? s.fieldTagValueEmpty : s.fieldTagValue}>{value || '—'}</Text>
     </View>
   )
 }

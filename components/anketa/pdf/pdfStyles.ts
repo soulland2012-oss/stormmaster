@@ -84,20 +84,35 @@ export const pdfStyles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  field: {
+  fieldTag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: `${GOLD}14`,
+    borderWidth: 1,
+    borderColor: '#D4BC7A',
+    borderRadius: 3,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    marginRight: 8,
     marginBottom: 8,
-    marginRight: 22,
-    minWidth: 90,
   },
-  fieldLabel: {
-    fontSize: 7.5,
+  fieldTagLabel: {
+    fontSize: 7,
     color: MUTED,
-    letterSpacing: 0.8,
-    marginBottom: 2,
+    letterSpacing: 0.6,
+    marginRight: 6,
   },
-  fieldValue: {
-    fontSize: 10,
+  fieldTagValue: {
+    fontSize: 9.5,
+    fontFamily: 'PT Serif',
+    fontWeight: 700,
     color: INK,
+  },
+  fieldTagValueEmpty: {
+    fontSize: 9.5,
+    fontFamily: 'PT Serif',
+    fontWeight: 400,
+    color: FAINT,
   },
   divider: {
     borderBottomWidth: 0.75,
