@@ -29,13 +29,15 @@ function OrgCard({ org }: { org: OrganizationSummary }) {
           <div className="absolute inset-0 overflow-hidden">
             <ParticleField count={20} r={org.particleR} g={org.particleG} b={org.particleB} className="z-0" />
           </div>
+          {/* Dark scrim — guarantees text contrast regardless of how bright/desaturated the org's accent is */}
+          <div className="absolute inset-0 bg-black/35" />
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             style={{ background: `radial-gradient(ellipse 80% 60% at 50% 110%, ${org.glowBg} 0%, transparent 70%)` }}
           />
           <div
             className="absolute inset-0"
-            style={{ background: `radial-gradient(ellipse 70% 45% at 50% -10%, ${org.accent}25 0%, transparent 60%)` }}
+            style={{ background: `radial-gradient(ellipse 70% 45% at 50% -10%, ${org.accent}14 0%, transparent 60%)` }}
           />
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -57,12 +59,12 @@ function OrgCard({ org }: { org: OrganizationSummary }) {
               </p>
               <h2
                 className="font-cinzel font-bold text-white mb-3 leading-none"
-                style={{ fontFamily: 'var(--font-cinzel, serif)', fontSize: 'clamp(1.6rem, 2.6vw, 2.3rem)', textShadow: `0 0 60px ${org.accent}40`, letterSpacing: '0.05em' }}
+                style={{ fontFamily: 'var(--font-cinzel, serif)', fontSize: 'clamp(1.6rem, 2.6vw, 2.3rem)', textShadow: `0 2px 12px rgba(0,0,0,0.8)`, letterSpacing: '0.05em' }}
               >
                 {org.title}
               </h2>
               <div className="h-px w-10 mb-3" style={{ background: `linear-gradient(90deg, ${org.accent}70, transparent)` }} />
-              <p className="text-stone-300/65 leading-6 text-[0.85rem]">{org.description}</p>
+              <p className="text-stone-100/85 leading-6 text-[0.85rem]">{org.description}</p>
             </div>
 
             <div>
