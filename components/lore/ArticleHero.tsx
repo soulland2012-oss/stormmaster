@@ -10,7 +10,7 @@ interface ArticleHeroProps {
   subtitle: string
   tagline: string
   description: string
-  atmosphere?: 'light' | 'dark' | 'neutral' | 'aura' | 'magic'
+  atmosphere?: 'light' | 'dark' | 'neutral' | 'aura' | 'magic' | 'memory' | 'void'
   tags?: string[]
   heroImage?: string
 }
@@ -83,6 +83,34 @@ const atmosphereStyles = {
     tagBorder: 'rgba(167,139,250,0.4)',
     tagColor: '#A78BFA',
     fadeFrom: '#050110',
+  },
+  memory: {
+    bg: `
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(184,147,90,0.30) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 40% at 80% 60%, rgba(139,111,66,0.16) 0%, transparent 50%),
+      linear-gradient(180deg, #0D0904 0%, #1A1208 35%, #120D06 65%, #080502 100%)
+    `,
+    particleR: 184, particleG: 147, particleB: 90,
+    rayColor: 'rgba(205, 170, 115',
+    accentColor: '#B8935A',
+    tagBg: 'rgba(184,147,90,0.12)',
+    tagBorder: 'rgba(184,147,90,0.4)',
+    tagColor: '#C9A876',
+    fadeFrom: '#0D0904',
+  },
+  void: {
+    bg: `
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(110,122,138,0.20) 0%, transparent 58%),
+      radial-gradient(ellipse 60% 35% at 20% 70%, rgba(60,66,76,0.18) 0%, transparent 50%),
+      linear-gradient(180deg, #020203 0%, #06070A 35%, #030304 65%, #000000 100%)
+    `,
+    particleR: 110, particleG: 122, particleB: 138,
+    rayColor: 'rgba(90, 100, 115',
+    accentColor: '#6E7A8A',
+    tagBg: 'rgba(110,122,138,0.10)',
+    tagBorder: 'rgba(110,122,138,0.35)',
+    tagColor: '#8B96A8',
+    fadeFrom: '#020203',
   },
 }
 
