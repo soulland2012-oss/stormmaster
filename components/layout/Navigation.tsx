@@ -24,6 +24,7 @@ const navLinks = [
     label: 'Лор',
     href: '/lore/house-kaslana',
     sub: [
+      { label: 'Введение',     href: '/lore/intro' },
       { label: 'История мира', href: '/lore/history' },
       { label: 'Дом Каслана', href: '/lore/house-kaslana' },
       { label: 'Организации', href: '/lore/organizations' },
@@ -31,7 +32,14 @@ const navLinks = [
       { label: 'Пантеон',     href: '/lore/gods' },
     ],
   },
-  { label: 'Персонажи', href: '/characters' },
+  {
+    label: 'Персонажи',
+    href: '/characters',
+    sub: [
+      { label: 'Персонажи', href: '/characters' },
+      { label: 'Создать анкету', href: '/characters/create' },
+    ],
+  },
   { label: 'Хроника',   href: '/timeline' },
   { label: 'Галерея',   href: '/gallery' },
 ]
