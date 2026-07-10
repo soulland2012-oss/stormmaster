@@ -124,7 +124,7 @@ export default function AnketaForm() {
         <MysticAbilityPicker
           mysticType={draft.mysticType}
           magicPath={draft.magicPath}
-          onMysticTypeChange={(v) => update('mysticType', v)}
+          onMysticTypeChange={(v) => setDraft((prev) => ({ ...prev, mysticType: v, magicPath: v === 'magic' ? prev.magicPath : null }))}
           onMagicPathChange={(v) => update('magicPath', v)}
         />
         <TextAreaField label="Абилки и аспекты" value={draft.mysticAbilities} onChange={(v) => update('mysticAbilities', v)} rows={4} />

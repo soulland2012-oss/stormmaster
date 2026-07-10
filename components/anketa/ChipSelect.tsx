@@ -54,7 +54,10 @@ export default function ChipSelect({
               }
             }}
             whileTap={{ scale: 0.97 }}
-            className="relative text-left rounded-sm px-3.5 py-2.5 transition-all duration-200 cursor-pointer select-none"
+            className={cn(
+              'relative text-left rounded-sm py-2.5 pl-3.5 transition-all duration-200 cursor-pointer select-none',
+              opt.href ? 'pr-7' : 'pr-3.5',
+            )}
             style={{
               background: active ? `${color}18` : 'rgba(255,255,255,0.55)',
               border: `1px solid ${active ? `${color}80` : `${color}25`}`,
@@ -81,7 +84,7 @@ export default function ChipSelect({
                 href={opt.href}
                 target="_blank"
                 onClick={(e) => e.stopPropagation()}
-                className="absolute top-0.5 right-0.5 p-1.5 rounded-sm opacity-50 hover:opacity-100 transition-opacity"
+                className="absolute top-1 right-1 p-1 rounded-sm opacity-50 hover:opacity-100 transition-opacity"
                 aria-label={`Подробнее: ${opt.label}`}
               >
                 <Info size={11} style={{ color }} />

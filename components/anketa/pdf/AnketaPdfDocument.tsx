@@ -65,7 +65,7 @@ export default function AnketaPdfDocument({ data }: AnketaPdfDocumentProps) {
   const mysticTypeLabel = data.mysticType
     ? mysticAbilityTypes.find((t) => t.id === data.mysticType)?.label
     : null
-  const magicPathLabel = data.magicPath
+  const magicPathLabel = data.mysticType === 'magic' && data.magicPath
     ? magicPaths.find((p) => p.id === data.magicPath)?.label
     : null
 
