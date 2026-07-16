@@ -75,6 +75,36 @@ export const pdfStyles = StyleSheet.create({
     lineHeight: 1.55,
     color: INK,
   },
+  boldText: {
+    fontWeight: 700,
+  },
+  proseHeading: {
+    fontFamily: 'PT Serif',
+    fontWeight: 700,
+    fontSize: 10,
+    color: GOLD,
+    letterSpacing: 0.4,
+    marginTop: 8,
+    marginBottom: 3,
+  },
+  bulletRow: {
+    flexDirection: 'row',
+    marginBottom: 2,
+  },
+  bulletMarker: {
+    fontSize: 10,
+    color: GOLD,
+    width: 12,
+  },
+  bulletText: {
+    fontSize: 10,
+    lineHeight: 1.55,
+    color: INK,
+    flex: 1,
+  },
+  blankLine: {
+    height: 6,
+  },
   emptyText: {
     fontSize: 9.5,
     lineHeight: 1.5,

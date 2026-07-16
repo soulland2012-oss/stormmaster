@@ -10,7 +10,7 @@ interface ArticleHeroProps {
   subtitle: string
   tagline: string
   description: string
-  atmosphere?: 'light' | 'dark' | 'neutral' | 'aura' | 'magic' | 'memory' | 'void'
+  atmosphere?: 'light' | 'dark' | 'neutral' | 'aura' | 'magic' | 'memory' | 'void' | 'blood'
   tags?: string[]
   heroImage?: string
 }
@@ -111,6 +111,20 @@ const atmosphereStyles = {
     tagBorder: 'rgba(110,122,138,0.35)',
     tagColor: '#8B96A8',
     fadeFrom: '#020203',
+  },
+  blood: {
+    bg: `
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(166,32,58,0.32) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 40% at 80% 60%, rgba(120,20,30,0.16) 0%, transparent 50%),
+      linear-gradient(180deg, #0A0203 0%, #170608 35%, #100405 65%, #050101 100%)
+    `,
+    particleR: 166, particleG: 32, particleB: 58,
+    rayColor: 'rgba(200, 60, 80',
+    accentColor: '#A6203A',
+    tagBg: 'rgba(166,32,58,0.14)',
+    tagBorder: 'rgba(166,32,58,0.4)',
+    tagColor: '#D14A63',
+    fadeFrom: '#0A0203',
   },
 }
 

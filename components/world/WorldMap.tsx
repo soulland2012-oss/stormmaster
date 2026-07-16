@@ -1,11 +1,19 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 
 const MAP_W = 1280
 const MAP_H = 778
 const N_SECTORS = 10   // angular sectors for edge-pillar detection
 const N_FLIES   = 24   // fireflies per territory
+
+// Territories that link through to a Государства article on click.
+const TERRITORY_LINKS: Record<string, string> = {
+  fenridia: '/world/countries/federatsiya-fenridiya',
+  dvro:     '/world/countries/dvorflyandiya',
+  ukl:      '/world/countries/yukl',
+}
 
 interface Territory {
   id: string; name: string; file: string; color: string
@@ -57,6 +65,7 @@ export default function WorldMap() {
   const dataRef      = useRef<Map<string, TerritoryData>>(new Map())
   const containerRef = useRef<HTMLDivElement>(null)
   const doneRef      = useRef(0)
+  const router = useRouter()
 
   useEffect(() => {
     const total = TERRITORIES.length
@@ -173,6 +182,10 @@ export default function WorldMap() {
     setHovered(null)
   }, [])
 
+  const onClick = useCallback(() => {
+    if (hovered && TERRITORY_LINKS[hovered]) router.push(TERRITORY_LINKS[hovered])
+  }, [hovered, router])
+
   const ht = hovered ? TERRITORIES.find(t => t.id === hovered) ?? null : null
   const hd = hovered ? dataRef.current.get(hovered) ?? null : null
 
@@ -214,10 +227,11 @@ export default function WorldMap() {
             position:    'relative',
             width:       '100%',
             aspectRatio: `${MAP_W} / ${MAP_H}`,
-            cursor:      hovered ? 'pointer' : 'default',
+            cursor:      hovered && TERRITORY_LINKS[hovered] ? 'pointer' : 'default',
           }}
           onMouseMove={onMove}
           onMouseLeave={() => setHovered(null)}
+          onClick={onClick}
         >
           {/* Territory image layers */}
           {TERRITORIES.map((t, idx) => {

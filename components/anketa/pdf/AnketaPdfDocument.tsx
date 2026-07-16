@@ -3,6 +3,7 @@ import type { AnketaFormData, Gender } from '@/types/anketa'
 import { playableRaces } from '@/data/races'
 import { ANKETA_FIELDS } from '@/data/anketa-fields'
 import { mysticAbilityTypes, magicPaths } from '@/data/mystic-systems'
+import { parseRichText, type RichSpan } from '@/lib/richText'
 import { registerAnketaFonts } from './fonts'
 import { pdfStyles as s } from './pdfStyles'
 
@@ -38,7 +39,7 @@ function SectionBlock({
   children: React.ReactNode
 }) {
   return (
-    <View style={s.section} wrap={false}>
+    <View style={s.section}>
       <View style={s.sectionHeader}>
         <Text style={s.sectionNum}>{num}</Text>
         <View style={s.sectionBar} />
@@ -49,11 +50,50 @@ function SectionBlock({
   )
 }
 
+function Spans({ spans }: { spans: RichSpan[] }) {
+  return (
+    <>
+      {spans.map((span, i) => (
+        <Text key={i} style={span.bold ? s.boldText : undefined}>
+          {span.text}
+        </Text>
+      ))}
+    </>
+  )
+}
+
 function ProseOrEmpty({ text, emptyLabel }: { text: string; emptyLabel: string }) {
-  return text.trim() ? (
-    <Text style={s.bodyText}>{text}</Text>
-  ) : (
-    <Text style={s.emptyText}>{emptyLabel}</Text>
+  if (!text.trim()) return <Text style={s.emptyText}>{emptyLabel}</Text>
+
+  const lines = parseRichText(text)
+  return (
+    <View>
+      {lines.map((line, i) => {
+        if (line.type === 'blank') return <View key={i} style={s.blankLine} />
+        if (line.type === 'heading') {
+          return (
+            <Text key={i} style={s.proseHeading}>
+              <Spans spans={line.spans} />
+            </Text>
+          )
+        }
+        if (line.type === 'bullet') {
+          return (
+            <View key={i} style={s.bulletRow}>
+              <Text style={s.bulletMarker}>•</Text>
+              <Text style={s.bulletText}>
+                <Spans spans={line.spans} />
+              </Text>
+            </View>
+          )
+        }
+        return (
+          <Text key={i} style={s.bodyText}>
+            <Spans spans={line.spans} />
+          </Text>
+        )
+      })}
+    </View>
   )
 }
 

@@ -11,7 +11,7 @@ import FormSection from './FormSection'
 import ChipSelect from './ChipSelect'
 import MysticAbilityPicker from './MysticAbilityPicker'
 import TextField from './TextField'
-import TextAreaField from './TextAreaField'
+import RichTextAreaField from './RichTextAreaField'
 import SaveDraftNotice from './SaveDraftNotice'
 
 const ACCENT = '#D4AF37'
@@ -117,7 +117,7 @@ export default function AnketaForm() {
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[2].id} num={ANKETA_FIELDS[2].num} title={ANKETA_FIELDS[2].label} description={ANKETA_FIELDS[2].desc}>
-        <TextAreaField label="Описание" value={draft.physicalAbilities} onChange={(v) => update('physicalAbilities', v)} rows={4} />
+        <RichTextAreaField label="Описание" value={draft.physicalAbilities} onChange={(v) => update('physicalAbilities', v)} rows={4} />
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[3].id} num={ANKETA_FIELDS[3].num} title={ANKETA_FIELDS[3].label} description={ANKETA_FIELDS[3].desc}>
@@ -127,7 +127,7 @@ export default function AnketaForm() {
           onMysticTypeChange={(v) => setDraft((prev) => ({ ...prev, mysticType: v, magicPath: v === 'magic' ? prev.magicPath : null }))}
           onMagicPathChange={(v) => update('magicPath', v)}
         />
-        <TextAreaField label="Абилки и аспекты" value={draft.mysticAbilities} onChange={(v) => update('mysticAbilities', v)} rows={4} />
+        <RichTextAreaField label="Абилки и аспекты" value={draft.mysticAbilities} onChange={(v) => update('mysticAbilities', v)} rows={4} />
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[4].id} num={ANKETA_FIELDS[4].num} title={ANKETA_FIELDS[4].label} description={ANKETA_FIELDS[4].desc}>
@@ -139,23 +139,23 @@ export default function AnketaForm() {
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[5].id} num={ANKETA_FIELDS[5].num} title={ANKETA_FIELDS[5].label} description={ANKETA_FIELDS[5].desc}>
-        <TextAreaField label="Навыки" value={draft.skills} onChange={(v) => update('skills', v)} rows={3} />
+        <RichTextAreaField label="Навыки" value={draft.skills} onChange={(v) => update('skills', v)} rows={3} />
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[6].id} num={ANKETA_FIELDS[6].num} title={ANKETA_FIELDS[6].label} description={ANKETA_FIELDS[6].desc}>
-        <TextAreaField label="Инвентарь" value={draft.inventory} onChange={(v) => update('inventory', v)} rows={3} />
+        <RichTextAreaField label="Инвентарь" value={draft.inventory} onChange={(v) => update('inventory', v)} rows={3} />
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[7].id} num={ANKETA_FIELDS[7].num} title={ANKETA_FIELDS[7].label}>
-        <TextAreaField label="Характер" value={draft.personality} onChange={(v) => update('personality', v)} rows={4} />
+        <RichTextAreaField label="Характер" value={draft.personality} onChange={(v) => update('personality', v)} rows={4} />
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[8].id} num={ANKETA_FIELDS[8].num} title={ANKETA_FIELDS[8].label}>
-        <TextAreaField label="Биография" value={draft.biography} onChange={(v) => update('biography', v)} rows={6} />
+        <RichTextAreaField label="Биография" value={draft.biography} onChange={(v) => update('biography', v)} rows={6} />
       </FormSection>
 
       <FormSection id={ANKETA_FIELDS[9].id} num={ANKETA_FIELDS[9].num} title={ANKETA_FIELDS[9].label}>
-        <TextAreaField label="Внешность" value={draft.appearance} onChange={(v) => update('appearance', v)} rows={4} />
+        <RichTextAreaField label="Внешность" value={draft.appearance} onChange={(v) => update('appearance', v)} rows={4} />
       </FormSection>
 
       <motion.div
